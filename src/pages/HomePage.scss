@@ -1,0 +1,17 @@
+.home-page {
+  img {
+    // border: 1rem dotted red;
+  }
+  .btn {
+    padding: 2rem 5rem;
+  }
+}
+.card {
+  border: none !important;
+  &:hover {
+    box-shadow: 2px 2px 30px darken($color: #e3e3e3, $amount: 10%);
+  }
+  .card-title {
+    font-size: 1.8rem;
+  }
+}
