@@ -22,12 +22,15 @@ function CartContextProvider({ children }) {
   const removeProduct = (product) => {
     dispatch({ type: 'REMOVE_ITEM', payload: product });
   };
+  const clearCart = () => dispatch({ type: 'CLEAR' });
+
   const contextValues = {
     ...state,
     addProduct,
     removeProduct,
     addMore,
     addLess,
+    clearCart,
   };
 
   return (

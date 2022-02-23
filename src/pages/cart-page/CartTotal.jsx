@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function CartTotal({ total, itemCount }) {
+function CartTotal({ total, itemCount, clearCart }) {
   return (
     <article className="total-block animate__animated animate__lightSpeedInRight">
       <h4 className="product-title mb-4">Total Items: {itemCount}</h4>
@@ -11,7 +11,7 @@ function CartTotal({ total, itemCount }) {
       <Button variant="outline-info" size="block">
         CHECKOUT
       </Button>
-      <Button variant="danger" size="block">
+      <Button variant="danger" size="block" onClick={clearCart}>
         CLEAR
       </Button>
     </article>

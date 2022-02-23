@@ -51,7 +51,7 @@ function SingleProductPage() {
               <Content width="w-100" cssClassNames="h-100">
                 <article className="product-text-block animate__animated animate__lightSpeedInRight">
                   <h4 className="product-price font-weight-bold mb-4 float-right">
-                    {product.price}
+                    ${product.price}
                   </h4>
 
                   {!inCart && (

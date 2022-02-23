@@ -8,8 +8,15 @@ import CartItem from './CartItem';
 import CartTotal from './CartTotal';
 
 function CartPage() {
-  const { cartItems, addMore, addLess, removeProduct, itemCount, total } =
-    useContext(CartContext);
+  const {
+    cartItems,
+    addMore,
+    addLess,
+    removeProduct,
+    itemCount,
+    total,
+    clearCart,
+  } = useContext(CartContext);
   console.log('CART PAGE: cartItems', cartItems.length);
   console.log('CART PAGE: total', total);
   console.log('CART PAGE: itemCount', itemCount);
@@ -45,7 +52,11 @@ function CartPage() {
               ))}
             </Col>
             <Col sm={4}>
-              <CartTotal total={total} itemCount={itemCount} />
+              <CartTotal
+                total={total}
+                itemCount={itemCount}
+                clearCart={clearCart}
+              />
             </Col>
           </Row>
         )}
