@@ -1,0 +1,16 @@
+.shopping-bag-holder {
+  position: relative;
+  .shopping-bag {
+    font-size: 3.9rem !important;
+  }
+  .shopping-bag-price {
+    position: absolute;
+    top: 45px;
+    left: 35px;
+    padding: 0.8rem 1rem;
+  }
+}
+
+a {
+  color: black;
+}

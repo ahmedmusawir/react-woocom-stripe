@@ -7,16 +7,15 @@ import reportWebVitals from './reportWebVitals';
 import CartContextProvider from './context/CartContext';
 
 ReactDOM.render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <ProductsContextProvider>
-      <CartContextProvider>
-        <App />
-      </CartContextProvider>
-    </ProductsContextProvider>
-  </BrowserRouter>,
-  // </React.StrictMode>,
-
+  <React.StrictMode>
+    <BrowserRouter>
+      <ProductsContextProvider>
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
+      </ProductsContextProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

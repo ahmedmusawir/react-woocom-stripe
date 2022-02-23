@@ -1,29 +1,36 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MainNavbar from './components/general/MainNavbar';
 import NotFound from './pages/NotFound';
-import './App.scss';
 import HomePage from './pages/HomePage';
+import SingleProductPage from './pages/SingleProductPage';
+import ShopPage from './pages/ShopPage';
+import './App.scss';
+import TestPage from './pages/TestPage';
+import CartPage from './pages/cart-page/CartPage';
 
 function App(props) {
-  // const BASE_URL = process.env.REACT_APP_BASE_URL;
-  // const KEY = process.env.REACT_APP_CONSUMER_KEY;
-  // console.log(KEY);
-  // console.log(BASE_URL);
   return (
-    <BrowserRouter>
+    <main>
       <MainNavbar />
-      <main>
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </main>
-    </BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/shop">
+          <ShopPage />
+        </Route>
+        <Route exact path="/cart">
+          <CartPage />
+        </Route>
+        <Route exact path="/product/:id">
+          <SingleProductPage />
+        </Route>
+        <Route path="/*">
+          <NotFound />
+        </Route>
+      </Switch>
+    </main>
   );
 }
 

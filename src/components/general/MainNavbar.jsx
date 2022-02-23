@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { BsHandbagFill } from 'react-icons/bs';
+import CartIcon from '../common/CartIcon';
 import './MainNavbar.scss';
 
 function MainNavbar(props) {
@@ -9,13 +9,7 @@ function MainNavbar(props) {
     <Navbar bg="light" expand="md">
       <Container>
         <Navbar.Brand as={Link} to="/cart">
-          <div className="shopping-bag-holder">
-            <BsHandbagFill className="shopping-bag" />
-            {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info text-light"> */}
-            <span className="shopping-bag-price badge rounded-pill bg-info text-light">
-              99
-            </span>
-          </div>
+          <CartIcon />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -27,6 +21,10 @@ function MainNavbar(props) {
             <Nav.Link as={Link} to="/shop">
               Shop
             </Nav.Link>
+
+            {/* <Nav.Link as={Link} to="/test">
+              Test
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

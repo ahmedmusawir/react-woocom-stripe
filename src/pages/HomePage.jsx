@@ -1,45 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Page from '../components/layouts/Page';
 import { Row, Col, Button, Card, Navbar, Container } from 'react-bootstrap';
 import Content from '../components/layouts/Content';
+import { ProductsContext } from '../context/ProductsContext';
+
 import hero from '../images/home-hero-pic.jpg';
 import './HomePage.scss';
-import products from '../carData';
-import { getData } from '../services/HttpService';
+import 'animate.css';
+import Product from '../components/common/Product';
 
 function HomePage() {
-  useEffect(() => {
-    const getProducts = async () => {
-      const data = await getData();
-      console.log('WOOCOM DATA', data);
-    };
-    getProducts();
-  }, []);
-
-  const featuredItems = products
-    .filter((product, i) => i < 3)
-    .map((product) => (
-      <Col
-        key={product.id}
-        sm={12}
-        md={4}
-        className="d-flex justify-content-center"
-      >
-        {/* <Card style={{ width: '30rem' }}> */}
-        <Card>
-          <figure className="img-holder">
-            <Card.Img variant="top" src={product.images[0].src} />
-          </figure>
-          <Card.Body>
-            <Card.Title>{product.name}</Card.Title>
-            <Card.Text className="font-weight-bold">${product.price}</Card.Text>
-            <Button variant="dark" size="block">
-              ADD TO CART
-            </Button>
-          </Card.Body>
-        </Card>
-      </Col>
-    ));
+  const { featured } = useContext(ProductsContext);
+  const featuredItems = featured.map((product) => (
+    <Col
+      key={product.id}
+      sm={12}
+      md={4}
+      className="d-flex justify-content-center"
+    >
+      <Product product={product} />
+    </Col>
+  ));
 
   return (
     <>
@@ -48,10 +30,16 @@ function HomePage() {
           <Col sm={12}>
             <Content width="w-100" cssClassNames="text-center">
               <h1 className="display-2">Cars</h1>
-              <img className="w-100" src={hero} alt="" />
-              <Button variant="outline-dark" size="lg">
-                Start Shopping
-              </Button>
+              <img
+                className="w-100  animate__animated animate__fadeIn"
+                src={hero}
+                alt=""
+              />
+              <Link to="/shop">
+                <Button variant="outline-dark" size="lg">
+                  Start Shopping
+                </Button>
+              </Link>
             </Content>
           </Col>
         </Row>
@@ -94,7 +82,7 @@ function HomePage() {
         <Row>{featuredItems}</Row>
       </Page>
       <Navbar bg="light" expand="md" fixed="bottom">
-        <p className="mx-auto mt-2">Copyright &copy; 2022</p>
+        <p className="mx-auto mt-2">Copyright CARS &copy; 2022</p>
       </Navbar>
     </>
   );
