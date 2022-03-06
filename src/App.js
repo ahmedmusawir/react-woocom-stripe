@@ -8,6 +8,7 @@ import ShopPage from './pages/ShopPage';
 import './App.scss';
 import TestPage from './pages/TestPage';
 import CartPage from './pages/cart-page/CartPage';
+import CheckoutPage from './pages/checkout-page/CheckoutPage';
 
 function App(props) {
   return (
@@ -22,6 +23,9 @@ function App(props) {
         </Route>
         <Route exact path="/cart">
           <CartPage />
+        </Route>
+        <Route exact path="/checkout">
+          <CheckoutPage />
         </Route>
         <Route exact path="/product/:id">
           <SingleProductPage />

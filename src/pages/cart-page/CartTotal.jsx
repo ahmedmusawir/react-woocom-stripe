@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 function CartTotal({ total, itemCount, clearCart }) {
@@ -8,9 +9,11 @@ function CartTotal({ total, itemCount, clearCart }) {
       <h5 className="product-price font-weight-bold mb-4">
         Total Cost: <span className="text-info">${total}</span>
       </h5>
-      <Button variant="outline-info" size="block">
-        CHECKOUT
-      </Button>
+      <Link to="/checkout">
+        <Button variant="outline-info" size="block">
+          CHECKOUT
+        </Button>
+      </Link>
       <Button variant="danger" size="block" onClick={clearCart}>
         CLEAR
       </Button>
