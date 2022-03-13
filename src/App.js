@@ -9,6 +9,7 @@ import './App.scss';
 import TestPage from './pages/TestPage';
 import CartPage from './pages/cart-page/CartPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
+import CheckoutSuccess from './pages/checkout-page/CheckoutSuccess';
 
 function App(props) {
   return (
@@ -27,8 +28,14 @@ function App(props) {
         <Route exact path="/checkout">
           <CheckoutPage />
         </Route>
+        <Route exact path="/checkout-success">
+          <CheckoutSuccess />
+        </Route>
         <Route exact path="/product/:id">
           <SingleProductPage />
+        </Route>
+        <Route exact path="/test">
+          <TestPage />
         </Route>
         <Route path="/*">
           <NotFound />

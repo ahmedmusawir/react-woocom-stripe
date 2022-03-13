@@ -11,7 +11,7 @@ const ProductsContextProvider = ({ children }) => {
   useEffect(() => {
     const getProducts = async () => {
       const allProductsUrl = 'products';
-      const productsUrl = 'products?category_exclude=414';
+      const productsUrl = 'products?category_exclude=414'; //414 IS THE FEATURED PRODUCTS CATEGORY;
       const featuredProductUrl = 'products?featured=true';
 
       setIsPending(true);

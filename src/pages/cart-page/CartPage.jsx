@@ -17,7 +17,7 @@ function CartPage() {
     total,
     clearCart,
   } = useContext(CartContext);
-  console.log('CART PAGE: cartItems', cartItems.length);
+  console.log('CART PAGE: cartItems', cartItems);
   console.log('CART PAGE: total', total);
   console.log('CART PAGE: itemCount', itemCount);
   return (
