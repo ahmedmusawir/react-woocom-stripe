@@ -8,7 +8,7 @@ import StripeContainer from '../../stripe/StripeContainer';
 import './CheckoutPage.scss';
 
 function CheckoutPage() {
-  const { cartItems, itemCount, total } = useContext(CartContext);
+  const { cartItems, total, clearCart } = useContext(CartContext);
   return (
     <>
       <Page wide={false} pageTitle="React Woocom" classes="cart-page pb-5 mb-5">
@@ -22,9 +22,13 @@ function CheckoutPage() {
 
         <Row className="animate__animated animate__fadeIn">
           <Col sm={7}>
-            <StripeContainer total={total} cartItems={cartItems} />
+            <StripeContainer
+              total={total}
+              cartItems={cartItems}
+              clearCart={clearCart}
+            />
           </Col>
-          <Col sm={5} className="animate__animated animate__lightSpeedInRight">
+          <Col sm={5} className="animate__animated animate__bounceInRight">
             {/* SUMMARY SECTION */}
             <h5 className="font-weight-bold p-4 border">Summary</h5>
             <Content>
@@ -49,7 +53,6 @@ function CheckoutPage() {
                 </Col>
               </Row>
             </Content>
-
             {/* IN CART SECTION */}
             <h5 className="font-weight-bold p-4 border">In Cart</h5>
             <Content>

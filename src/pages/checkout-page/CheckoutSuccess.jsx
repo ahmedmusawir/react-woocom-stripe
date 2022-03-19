@@ -24,8 +24,8 @@ function CheckoutSuccess() {
               <h3 className="text-danger">
                 You will NEVER receive your shipment ... you dummy!!!
               </h3>
-              <div className="">
-                <img src={bugattiBack} alt="" />
+              <div>
+                <img className="w-100" src={bugattiBack} alt="" />
               </div>
             </div>
           </Col>

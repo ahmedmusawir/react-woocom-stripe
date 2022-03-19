@@ -8,7 +8,7 @@ const PUBLIC_KEY =
 
 const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
-function StripeContainer({ total, cartItems }) {
+function StripeContainer({ total, cartItems, clearCart }) {
   const totalAmount = total * 100;
   const lineItems = [];
 
@@ -19,11 +19,16 @@ function StripeContainer({ total, cartItems }) {
     };
 
     lineItems.push(cartItem);
+    return null;
   });
 
   return (
     <Elements stripe={stripeTestPromise}>
-      <PaymentForm totalAmount={totalAmount} lineItems={lineItems} />
+      <PaymentForm
+        totalAmount={totalAmount}
+        lineItems={lineItems}
+        clearCart={clearCart}
+      />
     </Elements>
   );
 }

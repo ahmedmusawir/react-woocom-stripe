@@ -25,7 +25,7 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function PaymentForm({ totalAmount, lineItems }) {
+export default function PaymentForm({ totalAmount, lineItems, clearCart }) {
   const history = useHistory();
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
@@ -97,6 +97,7 @@ export default function PaymentForm({ totalAmount, lineItems }) {
           // CREATING WOOCOM ORDER
           const url = 'orders';
           setOrder(url, data);
+          clearCart();
         }
       } catch (error) {
         console.log('Error', error);
