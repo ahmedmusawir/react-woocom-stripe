@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { getData } from '../services/HttpService';
+import axios from 'axios';
 
 export const ProductsContext = createContext();
 
@@ -9,10 +10,18 @@ const ProductsContextProvider = ({ children }) => {
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
+    axios.interceptors.request.use(function (config) {
+      const { headers = {} } = config || {};
+      if (headers['User-Agent']) delete config.headers['User-Agent'];
+
+      return config;
+    });
+
     const getProducts = async () => {
       const allProductsUrl = 'products';
-      const productsUrl = 'products?category_exclude=414'; //414 IS THE FEATURED PRODUCTS CATEGORY;
       const featuredProductUrl = 'products?featured=true';
+      // const productsUrl = 'products?category_exclude=414'; //414 IS THE FEATURED PRODUCTS CATEGORY;
+      // Check WP functions.php file for enhancement
 
       setIsPending(true);
 

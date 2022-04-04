@@ -1,11 +1,12 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import Page from '../components/layouts/Page';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import Content from '../components/layouts/Content';
 import { ProductsContext } from '../context/ProductsContext';
 import { CartContext } from '../context/CartContext';
 import { isInCart } from '../helpers/helper';
+import { getData } from '../services/HttpService';
 import _ from 'lodash';
 import './SingleProductPage.scss';
 import 'animate.css';
@@ -20,14 +21,28 @@ function SingleProductPage() {
   const { addProduct, cartItems, addMore } = useContext(CartContext);
   const inCart = isInCart(product, cartItems);
 
-  // console.log('SINGLE PRODUCT PAGE', products);
   useEffect(() => {
-    const product = products.find((item) => Number(item.id) === Number(id));
-    setProduct(product);
+    // window.scrollTo(0, 0);
+    const prod = products.find((item) => Number(item.id) === Number(id));
 
-    const mainImg = _.first(product.images);
-    // console.log('SINGLE PROD: IMG W LODASH - _.first', mainImg.src);
-    setImage(mainImg.src);
+    if (prod === undefined) {
+      const getSingleProduct = async () => {
+        const singleProductUrl = `products/${id}`;
+        const singleProduct = await getData(singleProductUrl);
+
+        setProduct(singleProduct.data);
+        // console.log('SINGLE PRODUCT PAGE: SINGLE PRODUCT', singleProduct.data);
+      };
+
+      getSingleProduct();
+      console.log('SINGLE PRODUCT PAGE: SINGLE PRODUCT', product);
+    } else {
+      setProduct(prod);
+      // console.log('SINGLE PRODUCT PAGE: SINGLE PRODUCT', product);
+      const mainImg = _.first(prod.images);
+      setImage(mainImg.src);
+      // console.log('SINGLE PROD: IMG W LODASH - _.first', mainImg.src);
+    }
   }, [id, product, products, history]);
 
   // console.log('SINGLE PAGE: ITEM COUNT', itemCount);
@@ -37,7 +52,7 @@ function SingleProductPage() {
       {product && (
         <Container className="">
           <Row>
-            <Col sm={6} className="mx-auto">
+            <Col sm={12} md={9} lg={7} className="mx-auto">
               <Content width="w-100 h-100" cssClassNames="text-center">
                 <h1 className="product-title">{product.name}</h1>
                 <img
@@ -47,7 +62,7 @@ function SingleProductPage() {
                 />
               </Content>
             </Col>
-            <Col sm={8} className="mx-auto">
+            <Col sm={12} md={9} lg={7} className="mx-auto">
               <Content width="w-100" cssClassNames="h-100">
                 <article className="product-text-block animate__animated animate__lightSpeedInRight">
                   <h4 className="product-price font-weight-bold mb-4 float-right">
@@ -72,9 +87,11 @@ function SingleProductPage() {
                       ADD MORE
                     </Button>
                   )}
-                  <Button variant="dark" size="block">
-                    PROCEED TO CHECKOUT
-                  </Button>
+                  <Link to="/checkout">
+                    <Button variant="dark" size="block" className="mt-2">
+                      PROCEED TO CHECKOUT
+                    </Button>
+                  </Link>
                   <p
                     className="product-description mt-4"
                     dangerouslySetInnerHTML={{ __html: product.description }}

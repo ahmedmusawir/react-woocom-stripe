@@ -5,4 +5,9 @@
   a {
     font-size: 1.2rem;
   }
+
+  @media (max-width: 767px) {
+    margin-top: 2rem;
+    float: right;
+  }
 }

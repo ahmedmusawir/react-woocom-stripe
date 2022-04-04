@@ -1,0 +1,42 @@
+<?php
+/*========================================
+// WOOCOM REST API - EXCLUDE CATETORY PARAM CREATION
+========================================*/
+
+function filter_woocommerce_rest_category_exclude($args, $request)
+{
+ $params = $request->get_query_params();
+ if (isset($params['category_exclude'])) {
+  $args['tax_query'] = array(
+   array(
+    'taxonomy' => 'product_cat',
+    'terms'    => explode(',', $params['category_exclude']),
+    'field'    => 'term_id',
+    'operator' => 'NOT IN'
+   )
+  );
+ }
+ return $args;
+};
+add_filter("woocommerce_rest_product_object_query", 'filter_woocommerce_rest_category_exclude', 10, 2);
+
+/*========================================
+// WOOCOM REST API - EXCLUDE TAG PARAM CREATION
+========================================*/
+
+function filter_woocommerce_rest_tag_exclude($args, $request)
+{
+ $params = $request->get_query_params();
+ if (isset($params['tag_exclude'])) {
+  $args['tax_query'] = array(
+   array(
+    'taxonomy' => 'product_tag',
+    'terms'    => explode(',', $params['tag_exclude']),
+    'field'    => 'term_id',
+    'operator' => 'NOT IN'
+   )
+  );
+ }
+ return $args;
+};
+add_filter("woocommerce_rest_product_object_query", 'filter_woocommerce_rest_tag_exclude', 10, 2);

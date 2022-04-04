@@ -7,6 +7,7 @@ function Page({ wide, pageTitle, children, classes }) {
   // Setting up mandatory Page Title in the browser
   useEffect(() => {
     document.title = `${pageTitle} | Demo `;
+    // window.scrollTo(0, 0);
   }, [pageTitle]);
 
   // Checking for page width prop fluid to be true or false

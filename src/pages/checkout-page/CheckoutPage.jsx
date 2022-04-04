@@ -34,7 +34,7 @@ function CheckoutPage() {
             <Content>
               <Row className="mb-2">
                 <Col sm={8}>SubTotal:</Col>
-                <Col sm={4}>${total}</Col>
+                <Col sm={4}>${total.toFixed(2)}</Col>
               </Row>
               <Row className="mb-2">
                 <Col sm={8}>Shipping & Handling:</Col>
@@ -49,7 +49,7 @@ function CheckoutPage() {
                   <h5 className="font-weight-bold">Total:</h5>
                 </Col>
                 <Col sm={4}>
-                  <h5 className="font-weight-bold">${total}</h5>
+                  <h5 className="font-weight-bold">${total.toFixed(2)}</h5>
                 </Col>
               </Row>
             </Content>
@@ -58,7 +58,7 @@ function CheckoutPage() {
             <Content>
               {cartItems.length &&
                 cartItems.map((item) => (
-                  <Row className="mb-4">
+                  <Row className="mb-4" key={item.id}>
                     <Col sm={6}>
                       <img src={item.images[0].src} alt="" className="w-100" />
                     </Col>

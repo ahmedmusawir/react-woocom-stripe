@@ -5,16 +5,18 @@ import NotFound from './pages/NotFound';
 import HomePage from './pages/HomePage';
 import SingleProductPage from './pages/SingleProductPage';
 import ShopPage from './pages/ShopPage';
-import './App.scss';
 import TestPage from './pages/TestPage';
 import CartPage from './pages/cart-page/CartPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
 import CheckoutSuccess from './pages/checkout-page/CheckoutSuccess';
+import './App.scss';
+import ScrollToTop from './helpers/ScrollToTop';
 
 function App(props) {
   return (
     <main>
       <MainNavbar />
+      <ScrollToTop />
       <Switch>
         <Route exact path="/">
           <HomePage />
