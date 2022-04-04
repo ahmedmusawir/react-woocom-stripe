@@ -35,31 +35,26 @@ function ShopPage() {
   });
 
   return (
-    <>
-      <Page wide={false} pageTitle="React Woocom" classes="home-page pb-5 mb-5">
-        <Content width="w-100 h-100" cssClassNames="text-center">
-          <h1 className="product-title display-2">Shop</h1>
-        </Content>
-        {isPending && (
-          <div className="d-flex justify-content-center">
-            <Puff color="red" height={100} width={100} />
-            {/* <ThreeDots color="red" height={100} width={100} /> */}
-          </div>
-        )}
-        <Row>
-          <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid animate__animated animate__fadeIn mt-5"
-            columnClassName="my-masonry-grid_column"
-          >
-            {productItems}
-          </Masonry>
-        </Row>
-      </Page>
-      <Navbar bg="light" expand="md" fixed="bottom">
-        <p className="mx-auto mt-2">Copyright CARS &copy; 2022</p>
-      </Navbar>
-    </>
+    <Page wide={false} pageTitle="React Woocom" classes="shop-page pb-5 mb-5">
+      <Content width="w-100 h-100" cssClassNames="text-center">
+        <h1 className="product-title display-2">Shop</h1>
+      </Content>
+      {isPending && (
+        <div className="d-flex justify-content-center">
+          <Puff color="red" height={100} width={100} />
+          {/* <ThreeDots color="red" height={100} width={100} /> */}
+        </div>
+      )}
+      <Row>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid animate__animated animate__fadeIn mt-5"
+          columnClassName="my-masonry-grid_column"
+        >
+          {productItems}
+        </Masonry>
+      </Row>
+    </Page>
   );
 }
 

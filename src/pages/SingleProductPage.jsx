@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import Page from '../components/layouts/Page';
-import { Row, Col, Container, Button } from 'react-bootstrap';
+import { Row, Col, Container, Button, Navbar } from 'react-bootstrap';
 import Content from '../components/layouts/Content';
 import { ProductsContext } from '../context/ProductsContext';
 import { CartContext } from '../context/CartContext';
@@ -48,7 +48,7 @@ function SingleProductPage() {
   // console.log('SINGLE PAGE: ITEM COUNT', itemCount);
 
   return (
-    <Page wide={true} pageTitle="Single Product">
+    <Page wide={true} pageTitle="Single Product" classes="single-product-page">
       {product && (
         <Container className="">
           <Row>

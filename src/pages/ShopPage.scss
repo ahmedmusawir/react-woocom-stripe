@@ -1,3 +1,13 @@
+.shop-page {
+  // border: 1rem dotted red;
+
+  @media (max-width: 400px) {
+    h1.display-2 {
+      font-size: 4rem;
+    }
+  }
+}
+
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
@@ -21,7 +31,7 @@
 }
 
 .col {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
   // box-shadow: 3px 3px 8px #e3e3e3;
 }

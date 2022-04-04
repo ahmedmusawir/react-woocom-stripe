@@ -1,0 +1,9 @@
+.checkout-page {
+  // border: 1rem dotted red;
+
+  @media (max-width: 400px) {
+    h1.display-2 {
+      font-size: 4rem;
+    }
+  }
+}

@@ -30,72 +30,67 @@ function HomePage() {
   };
 
   return (
-    <>
-      <Page wide={true} pageTitle="React Woocom" classes="home-page pb-5 mb-5">
+    <Page wide={true} pageTitle="React Woocom" classes="home-page pb-5 mb-5">
+      <Row>
+        <Col sm={12}>
+          <Content width="w-100" cssClassNames="text-center">
+            <h1 className="display-2">Cars</h1>
+            <img
+              className="home-hero-image w-100  animate__animated animate__fadeIn"
+              src={hero}
+              alt=""
+            />
+            <Button
+              variant="outline-dark"
+              size="lg"
+              onClick={goToShop}
+              className="animate__animated animate__fadeIn"
+            >
+              Start Shopping
+            </Button>
+          </Content>
+        </Col>
+      </Row>
+      <Container className="py-5 animate__animated animate__fadeIn">
         <Row>
-          <Col sm={12}>
-            <Content width="w-100" cssClassNames="text-center">
-              <h1 className="display-2">Cars</h1>
+          <Col sm={6}>
+            <Content width="w-100 border h-100" cssClassNames="text-center">
               <img
-                className="w-100  animate__animated animate__fadeIn"
-                src={hero}
+                className="w-100"
+                src="http://blockbuster.dns.army:8000/wp-content/uploads/2022/02/car-23.jpg"
                 alt=""
               />
-              <Button
-                variant="outline-dark"
-                size="lg"
-                onClick={goToShop}
-                className="animate__animated animate__fadeIn"
-              >
-                Start Shopping
-              </Button>
+            </Content>
+          </Col>
+          <Col sm={6}>
+            <Content
+              width="w-100"
+              cssClassNames="d-flex align-items-center h-100 bg-light"
+            >
+              <article>
+                <h1>The Car of the Future...</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Possimus rerum commodi vel eveniet. Facere sequi est harum
+                  molestias ex maxime sint doloremque, tempora quas adipisci
+                  consequatur quia voluptas totam expedita?
+                </p>
+              </article>
             </Content>
           </Col>
         </Row>
-        <Container className="py-5 animate__animated animate__fadeIn">
-          <Row>
-            <Col sm={6}>
-              <Content width="w-100 border h-100" cssClassNames="text-center">
-                <img
-                  className="w-100"
-                  src="http://blockbuster.dns.army:8000/wp-content/uploads/2022/02/car-23.jpg"
-                  alt=""
-                />
-              </Content>
-            </Col>
-            <Col sm={6}>
-              <Content
-                width="w-100"
-                cssClassNames="d-flex align-items-center h-100 bg-light"
-              >
-                <article>
-                  <h1>The Car of the Future...</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Possimus rerum commodi vel eveniet. Facere sequi est harum
-                    molestias ex maxime sint doloremque, tempora quas adipisci
-                    consequatur quia voluptas totam expedita?
-                  </p>
-                </article>
-              </Content>
-            </Col>
-          </Row>
-        </Container>
-        <Content>
-          <Row>
-            <Col sm={12} className="d-flex justify-content-center">
-              <Content width="w-100" cssClassNames="text-center">
-                <h1 className="font-weight-bold">Featured Products</h1>
-              </Content>
-            </Col>
-          </Row>
-          <Row>{featuredItems}</Row>
-        </Content>
-      </Page>
-      <Navbar bg="light" expand="md" fixed="bottom">
-        <p className="mx-auto mt-2">Copyright CARS &copy; 2022</p>
-      </Navbar>
-    </>
+      </Container>
+      <Content>
+        <Row>
+          <Col sm={12} className="d-flex justify-content-center">
+            <Content width="w-100" cssClassNames="text-center">
+              <h1 className="font-weight-bold">Featured Products</h1>
+            </Content>
+          </Col>
+        </Row>
+        <Row>{featuredItems}</Row>
+      </Content>
+    </Page>
   );
 }
 

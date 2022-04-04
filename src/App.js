@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MainNavbar from './components/general/MainNavbar';
+import { Navbar } from 'react-bootstrap';
 import NotFound from './pages/NotFound';
 import HomePage from './pages/HomePage';
 import SingleProductPage from './pages/SingleProductPage';
@@ -43,6 +44,9 @@ function App(props) {
           <NotFound />
         </Route>
       </Switch>
+      <Navbar bg="light" expand="md" fixed="bottom">
+        <p className="mx-auto mt-2">Copyright CARS &copy; 2022</p>
+      </Navbar>
     </main>
   );
 }

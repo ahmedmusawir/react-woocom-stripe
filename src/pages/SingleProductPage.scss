@@ -1,12 +1,11 @@
-img {
-  // border: 5px dotted red;
-}
-.product-text-block {
-  margin-top: -5rem;
-}
+.single-product-page {
+  .product-text-block {
+    margin-top: -5rem;
+  }
 
-.col-sm-6,
-.col-sm-8 {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+  .col-sm-6,
+  .col-sm-8 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
 }
