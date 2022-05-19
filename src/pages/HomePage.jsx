@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Page from '../components/layouts/Page';
-import { Row, Col, Button, Navbar, Container } from 'react-bootstrap';
+import { Row, Col, Button, Container } from 'react-bootstrap';
 import Content from '../components/layouts/Content';
-import { ProductsContext } from '../context/ProductsContext';
-
-import hero from '../images/home-hero-pic.jpg';
-import './HomePage.scss';
-import 'animate.css';
 import Product from '../components/common/Product';
+import { ProductsContext } from '../context/ProductsContext';
+import 'animate.css';
+import './HomePage.scss';
+import hero from '../images/home-hero-pic.jpg';
 
 function HomePage() {
   const { featured } = useContext(ProductsContext);

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Page from '../../components/layouts/Page';
 import Content from '../../components/layouts/Content';
-import { Row, Col, Button, Navbar } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { CartContext } from '../../context/CartContext';
 import './CartPage.scss';
 import CartItem from './CartItem';

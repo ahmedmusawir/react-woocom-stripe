@@ -21,10 +21,6 @@ function MainNavbar(props) {
             <Nav.Link as={Link} to="/shop">
               Shop
             </Nav.Link>
-
-            {/* <Nav.Link as={Link} to="/test">
-              Test
-            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

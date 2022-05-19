@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import Page from '../../components/layouts/Page';
 import Content from '../../components/layouts/Content';
-import { Row, Col, Button, Navbar } from 'react-bootstrap';
-import { CartContext } from '../../context/CartContext';
-import StripeContainer from '../../stripe/StripeContainer';
-import bugattiBack from '../../images/home-hero-pic.jpg';
+import { Row, Col, Navbar } from 'react-bootstrap';
+import carImage from '../../images/home-hero-pic.jpg';
 
 function CheckoutSuccess() {
-  const { cartItems, itemCount, total } = useContext(CartContext);
   return (
     <>
       <Page wide={false} pageTitle="React Woocom" classes="cart-page pb-5 mb-5">
@@ -21,11 +17,9 @@ function CheckoutSuccess() {
               <h2 className="">
                 Thankyou for giving us all your money ... Gottcha!!
               </h2>
-              <h3 className="text-danger">
-                You will NEVER receive your shipment ... you dummy!!!
-              </h3>
+
               <div>
-                <img className="w-100" src={bugattiBack} alt="" />
+                <img className="w-100" src={carImage} alt="" />
               </div>
             </div>
           </Col>

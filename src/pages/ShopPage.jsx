@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Page from '../components/layouts/Page';
-import { Row, Col, Navbar } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Content from '../components/layouts/Content';
 import { ProductsContext } from '../context/ProductsContext';
 import Product from '../components/common/Product';
-import { ThreeDots, Puff } from 'react-loader-spinner';
+import { Puff } from 'react-loader-spinner';
 import _ from 'lodash';
 import Masonry from 'react-masonry-css';
 import './ShopPage.scss';
@@ -21,7 +21,9 @@ function ShopPage() {
 
   const productItems = products.map((product) => {
     const catProd = product.categories.filter((cat) => cat.name === 'FEATURED');
+    // console.log('SHOP: CATPROD', catProd);
     const theCat = _.map(catProd, 'name');
+    // console.log('SHOP: THE CAT', theCat);
 
     if (_.first(theCat) !== 'FEATURED') {
       return (
@@ -42,7 +44,6 @@ function ShopPage() {
       {isPending && (
         <div className="d-flex justify-content-center">
           <Puff color="red" height={100} width={100} />
-          {/* <ThreeDots color="red" height={100} width={100} /> */}
         </div>
       )}
       <Row>

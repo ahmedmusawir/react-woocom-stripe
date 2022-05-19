@@ -12,12 +12,7 @@ function CartItem({ item, addMore, addLess, removeProduct }) {
     >
       <section className="row">
         <div className="col-sm-3">
-          <img
-            className="w-100"
-            src={item.images[0].src}
-            // src="http://localhost:10004/wp-content/uploads/2022/02/car-23.jpg"
-            alt=""
-          />
+          <img className="w-100" src={item.images[0].src} alt="" />
         </div>
         <div className="col-sm-5 text-center">
           <h4 className="product-title pt-3">{name}</h4>

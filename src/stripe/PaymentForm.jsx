@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { setOrder } from '../services/HttpService';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
+// CARD OPTIONS FOR STRIPE
 const CARD_OPTIONS = {
   iconStyle: 'solid',
   hidePostalCode: true,
@@ -31,11 +32,11 @@ export default function PaymentForm({ totalAmount, lineItems, clearCart }) {
   const stripe = useStripe();
   const elements = useElements();
 
-  // console.log('STRIPE PAYMENT FORM - LINE ITEMS', lineItems);
-
+  // SUBMIT EVENT FOR STRIPE FORM
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // BILLING DETAILS FOR STRIPE
     const billingDetails = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -47,6 +48,7 @@ export default function PaymentForm({ totalAmount, lineItems, clearCart }) {
       },
     };
 
+    // SETTING STRIPE PAYMENT METHOD
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -67,6 +69,7 @@ export default function PaymentForm({ totalAmount, lineItems, clearCart }) {
       phone: '(555) 555-5555',
     };
 
+    // WOOCOM MAIN DATA OBJECT
     const data = {
       payment_method: 'credit',
       payment_method_title: 'Credit Card',
@@ -83,6 +86,7 @@ export default function PaymentForm({ totalAmount, lineItems, clearCart }) {
       ],
     };
 
+    // MAKING CALL TO STRIPE MIDDLEWARE (NODE JS & EXPRESS)
     if (!error) {
       try {
         const { id } = paymentMethod;
@@ -170,71 +174,4 @@ export default function PaymentForm({ totalAmount, lineItems, clearCart }) {
     history.push('/checkout-success');
     return '';
   }
-
-  // return (
-  //   <>
-  //     {!success ? (
-  //       <form onSubmit={(e) => handleSubmit(e)}>
-  //         <fieldset className="FormGroup">
-  //           <input
-  //             className="form-control mb-3"
-  //             type="text"
-  //             placeholder="Name"
-  //             name="name"
-  //             required
-  //           />
-  //           <input
-  //             className="form-control mb-3"
-  //             type="email"
-  //             placeholder="Email"
-  //             name="email"
-  //             required
-  //           />
-  //           <input
-  //             className="form-control mb-3"
-  //             type="text"
-  //             placeholder="Address"
-  //             name="address"
-  //             required
-  //           />
-  //           <input
-  //             className="form-control mb-3"
-  //             type="text"
-  //             placeholder="City"
-  //             name="city"
-  //             required
-  //           />
-  //           <input
-  //             className="form-control mb-3"
-  //             type="text"
-  //             placeholder="State"
-  //             name="state"
-  //             required
-  //           />
-  //           <input
-  //             className="form-control mb-3"
-  //             type="text"
-  //             placeholder="Zip"
-  //             name="zip"
-  //             required
-  //           />
-
-  //           <div className="FormRow border p-2 mb-2">
-  //             <CardElement options={CARD_OPTIONS} />
-  //           </div>
-  //         </fieldset>
-  //         <button className="btn btn-info btn-block p-3">Pay Now</button>
-  //       </form>
-  //     ) : (
-  //       <div className="text-center">
-  //         <h2 className="text-success">
-  //           You just bought a sweet Bugatti Pic ... Congrats!!
-  //         </h2>
-  //         <div className="">
-  //           <img src={bugattiBack} alt="" />
-  //         </div>
-  //       </div>
-  //     )}
-  //   </>
-  // );
 }

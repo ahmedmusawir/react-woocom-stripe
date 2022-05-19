@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import ProductsContextProvider from './context/ProductsContext';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CartContextProvider from './context/CartContext';
+import ProductsContextProvider from './context/ProductsContext';
 
 ReactDOM.render(
-  // <React.StrictMode>
   <BrowserRouter>
     <ProductsContextProvider>
       <CartContextProvider>
@@ -15,7 +14,6 @@ ReactDOM.render(
       </CartContextProvider>
     </ProductsContextProvider>
   </BrowserRouter>,
-  // </React.StrictMode>,
 
   document.getElementById('root')
 );

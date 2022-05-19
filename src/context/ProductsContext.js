@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { getData } from '../services/HttpService';
-import axios from 'axios';
 
 export const ProductsContext = createContext();
 
@@ -10,13 +9,6 @@ const ProductsContextProvider = ({ children }) => {
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
-    axios.interceptors.request.use(function (config) {
-      const { headers = {} } = config || {};
-      if (headers['User-Agent']) delete config.headers['User-Agent'];
-
-      return config;
-    });
-
     const getProducts = async () => {
       const allProductsUrl = 'products';
       const featuredProductUrl = 'products?featured=true';
